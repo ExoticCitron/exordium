@@ -16,6 +16,8 @@ class VSCodeLogger:
 
     def __init__(self, name):
         self.name = name
+        self.file_logging = False
+        self.log_file = None
 
     def _log(self, level, message):
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -30,7 +32,32 @@ class VSCodeLogger:
             f"{self.name}:{func_name}:{lineno} - "
             f"{self.COLORS[level]}{message}{self.COLORS['RESET']}"
         )
+        
         print(log_message, file=sys.stderr)
+
+        if self.file_logging:
+            file_message = f"{current_time},{self.name},{level},{func_name}:{lineno},{message}\n"
+            self.log_file.write(file_message)
+            self.log_file.flush()
+
+    def configure_file_logging(self, filename, filemode='a'):
+        """
+        Configure file logging for the logger.
+        
+        :param filename: The name of the log file
+        :param filemode: The mode to open the file (default is 'a' for append)
+        """
+        self.file_logging = True
+        self.log_file = open(filename, filemode)
+
+    def close_file_logging(self):
+        """
+        Close the file logging if it's active.
+        """
+        if self.file_logging and self.log_file:
+            self.log_file.close()
+            self.file_logging = False
+            self.log_file = None
 
     def info(self, message):
         self._log('INFO', message)
