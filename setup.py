@@ -6,12 +6,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="exordium",
     version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Haveen",
+    author_email="exo@exodevs.space",
     description="A custom VSCode-style logger for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/exordium",
+    url="https://github.com/ExoticCitron/exordium",
     packages=find_packages(include=['exordium', 'exordium.*']),
     classifiers=[
         "Development Status :: 3 - Alpha",
