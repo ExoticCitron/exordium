@@ -63,5 +63,5 @@ venv.bak/
 .idea/
 
 #other files
-my_log_file.txt
+my_log_file.log
 src/
