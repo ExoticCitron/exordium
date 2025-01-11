@@ -13,7 +13,7 @@ pip install exordium
 Or directly from the GitHub repository:
 
 ```
-pip install git+https://github.com/yourusername/exordium.git
+pip install git+https://github.com/ExoticCitron/exordium.git
 ```
 
 ## Usage
