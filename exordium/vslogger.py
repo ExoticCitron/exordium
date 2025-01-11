@@ -5,10 +5,10 @@ import os
 
 class VSCodeLogger:
     COLORS = {
-        'INFO': '\033[92m',     # Green
+        'INFO': '\033[94m',     # Blue
         'DEBUG': '\033[96m',    # Cyan
         'WARNING': '\033[93m',  # Yellow
-        'SUCCESS': '\033[94m',  # Blue
+        'SUCCESS': '\033[92m',  # Green
         'ERROR': '\033[91m',    # Red
         'CRITICAL': '\033[95m', # Magenta
         'RESET': '\033[0m'      # Reset color
@@ -19,6 +19,21 @@ class VSCodeLogger:
         self.file_logging = False
         self.log_file = None
 
+    def _gradient_text(self, text):
+        gradient = [
+            '\033[38;2;128;128;128m', # Medium gray
+            '\033[38;2;96;96;96m',    # Medium-dark gray
+            '\033[38;2;64;64;64m',    # Dark gray
+            '\033[38;2;32;32;32m',    # Very dark gray
+            '\033[38;2;0;0;0m',       # Black
+        ]
+        
+        result = ""
+        for i, char in enumerate(text):
+            color_index = min(i, len(gradient) - 1)
+            result += f"{gradient[color_index]}{char}"
+        return result + self.COLORS['RESET']
+
     def _log(self, level, message):
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         caller = inspect.currentframe().f_back.f_back
@@ -26,8 +41,10 @@ class VSCodeLogger:
         lineno = caller.f_lineno
         func_name = caller.f_code.co_name
 
+        gradient_time = self._gradient_text(current_time)
+
         log_message = (
-            f"{current_time} ~ "
+            f"{gradient_time} ~ "
             f"{self.COLORS[level]}{level}{self.COLORS['RESET']} | "
             f"{self.name}:{func_name}:{lineno} - "
             f"{self.COLORS[level]}{message}{self.COLORS['RESET']}"
