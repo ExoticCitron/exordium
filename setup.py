@@ -11,8 +11,8 @@ setup(
     description="A custom VSCode-style logger for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ExoticCitron/exordium",
-    packages=find_packages(include=['exordium', 'exordium.*']),
+    url="https://github.com/ExoticCitron/exordiumx",
+    packages=find_packages(include=['exordiumx', 'exordiumx.*']),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
