@@ -2,11 +2,8 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 import sys
-<<<<<<< HEAD
-from exordium import get_logger
-=======
+
 from exordiumx import get_logger
->>>>>>> f4d9183 (v2)
 
 class TestVSCodeLogger(unittest.TestCase):
     def setUp(self):
