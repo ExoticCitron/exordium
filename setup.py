@@ -5,7 +5,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="exordiumx",
+<<<<<<< HEAD
     version="0.1.0",
+=======
+    version="0.2.0",
+>>>>>>> f4d9183 (v2)
     author="Haveen",
     author_email="exo@exodevs.space",
     description="A custom VSCode-style logger for Python",
